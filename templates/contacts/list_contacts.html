@@ -1,0 +1,77 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Registro | Lista de Contactos{% endblock title %}
+
+{% block titlePage %}Lista de Contactos{% endblock titlePage %}
+    
+{% block page_content %}
+    
+    {% for message in messages %}
+        {% if 'success' in message.tags %}
+            <div class="alert alert-success">
+                <a class="close" href="#" data-dismiss="alert">×</a>
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% for message in messages %}
+        {% if 'error' in message.tags %}
+            <div class="alert alert-error">
+                <a class="close" href="#" data-dismiss="alert">×</a>
+                <strong>Error!</strong>
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% for message in messages %}
+        {% if 'warning' in message.tags %}
+            <div class="alert alert-danger">
+                <a class="close" href="#" data-dismiss="alert">×</a>
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}    
+    <table class="table table-striped table-hover dt-responsive nowrap" style="width:100%">
+        <thead>
+            <th>No. Documento</th>        
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>Barrio</th>
+            <th class="all">Acciones</th>
+        </thead>
+        <tbody>
+            {% for contact in object_list%}
+                <tr>
+                    <td>{{ contact.document }}</td>
+                    <td>{{ contact.last_name }}</td>
+                    <td>{{ contact.first_name }}</td>
+                    <td>{{ contact.urbanization.urbanization }}</td>
+                    <td>
+                        <a href="{% url 'contacts:EditContact' contact.id %}">Editar</a>
+                        <a href="#">Detalle</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <nav>
+        {% if is_paginated %}
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                {% endif %}
+    
+                {% for i in paginator.page_range %}
+                    <li {% if page_obj.number == i %} class="active" {% endif %}>
+                        <a href="?page={{i}}">{{ i }}</a>
+                    </li>
+                {% endfor %}
+    
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </nav>
+
+{% endblock page_content %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Registro{% endblock title %}</title>
+</head>
+<body>
+    <h1>{% block titlePage %}Sistema de Registro{% endblock titlePage %}</h1>
+    <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/contacts/create_contacts">Crear contacto</a></li>
+        <li><a href="/contacts/list_contacts">Lista de contactos</a></li>
+        <li><a href="/contacts/new_agreements">Crear compromisos</a></li>
+        <li><a href="/contacts/list_agreements">Lista de compromisos</a></li>
+
+    </ul>
+    
+    {% block page_content %}
+    {% endblock page_content %}
+    
+</body>
+</html>

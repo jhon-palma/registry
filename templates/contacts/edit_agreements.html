@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Registro | Editar Compromiso{% endblock title %}
+
+{% block titlePage %}Editar Compromiso{% endblock titlePage %}
+    
+{% block page_content %}
+    
+    {% for message in messages %}
+        {% if 'success' in message.tags %}
+            <div class="alert alert-success">
+                <a class="close" href="#" data-dismiss="alert">×</a>
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% for message in messages %}
+        {% if 'error' in message.tags %}
+            <div class="alert alert-error">
+                <a class="close" href="#" data-dismiss="alert">×</a>
+                <strong>Error!</strong>
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% for message in messages %}
+        {% if 'warning' in message.tags %}
+            <div class="alert alert-danger">
+                <a class="close" href="#" data-dismiss="alert">×</a>
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% for field in form %}
+        {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+    {% endfor %}
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Actualizar">
+    </form>
+
+{% endblock page_content %}
