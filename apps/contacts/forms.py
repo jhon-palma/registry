@@ -35,10 +35,4 @@ class AgreementsForm(forms.ModelForm):
     class Meta:
         model = Agreements
         fields = '__all__'
-    # date = forms.DateField(label="Fecha:",widget=django.forms.DateInput(format = '%Y/%m/%d',
-    #         attrs={'placeholder': 'yyyy/mm/dd', 'class': 'date',}))
-    # hour = forms.TimeField(label="Hora")
-    # type = forms.ChoiceField(choices=TYPE_AGREEMENTS, label="Acuerdo") 
-    # detail = forms.CharField(required=False,widget=forms.Textarea, label="Detalle")
-    # leader = forms.ModelChoiceField(queryset=UrbanizationLeader.objects.get(leader=''),label="Lider")
-    # contact = forms.CharField(required=False,widget=forms.Textarea, label="Contacto")
+    
