@@ -103,7 +103,7 @@ class EditContact(SuccessMessageMixin, UpdateView):
     model=Contacts
     fields = ['first_name','last_name','type_document','document','birthday','gender','address','urbanization','email','cellphone','ocupation','skills','note','leader' ]
     template_name = 'contacts/edit_contact.html'
-    success_url = reverse_lazy('contacts:list_contacts')
+    success_url = reverse_lazy('contacts:ListContacts')
     success_message = "Registro actualizado correctamente"
 
 class NewAgreements(SuccessMessageMixin, CreateView):
